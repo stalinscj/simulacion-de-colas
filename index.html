@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Simulación</title>
+
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/estilos.css">
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<!-- Configuracion -->
+			<div class="col-sm-3" id="div-configuracion">
+				<div class="row">
+					<div class="col-sm-12 div-titulo">
+						<h1 class="text-center">Configuración</h1>
+					</div>
+				</div>
+				<form class="form-horizontal" role="form">
+					<div class="form-group">
+						<label for="max-tiempo-llegada" class="col-xs-6 control-label"><abbr title="Tiempo de">T.</abbr> Llegada (seg)</label>
+						<div class="col-xs-6">
+							<div class="input-group">
+							    <span class="input-group-btn btn-ocultar">
+							        <button type="button" class="btn btn-default" data-value="-1" data-target="#max-tiempo-llegada" data-toggle="spinner" data-on="mousehold">
+							            <span class="glyphicon glyphicon-minus"></span>
+							        </button>
+							    </span>
+							    <input type="text" data-ride="spinner" id="max-tiempo-llegada" class="form-control input-number" value="4" data-min="1">
+							    <span class="input-group-btn btn-ocultar">
+							        <button type="button" class="btn btn-default" data-value="1" data-target="#max-tiempo-llegada" data-toggle="spinner" data-on="mousehold">
+							            <span class="glyphicon glyphicon-plus"></span>
+							        </button>
+							    </span>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="max-cantidad-clientes" class="col-xs-6 control-label">Max. Clientes</label>
+						<div class="col-xs-6">
+							<div class="input-group">
+							    <span class="input-group-btn btn-ocultar">
+							        <button type="button" class="btn btn-default" data-value="-1" data-target="#max-cantidad-clientes" data-toggle="spinner" data-on="mousehold">
+							            <span class="glyphicon glyphicon-minus"></span>
+							        </button>
+							    </span>
+							    <input type="text" data-ride="spinner" id="max-cantidad-clientes" class="form-control input-number" value="5" data-min="1">
+							    <span class="input-group-btn btn-ocultar">
+							        <button type="button" class="btn btn-default" data-value="1" data-target="#max-cantidad-clientes" data-toggle="spinner" data-on="mousehold">
+							            <span class="glyphicon glyphicon-plus"></span>
+							        </button>
+							    </span>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="duracion-simulacion" class="col-xs-6 control-label"><abbr title="Tiempo de">T.</abbr> Simulación (min)</label>
+						<div class="col-xs-6">
+							<div class="input-group">
+							    <span class="input-group-btn btn-ocultar">
+							        <button type="button" class="btn btn-default" data-value="-1" data-target="#duracion-simulacion" data-toggle="spinner" data-on="mousehold">
+							            <span class="glyphicon glyphicon-minus"></span>
+							        </button>
+							    </span>
+							    <input type="text" data-ride="spinner" id="duracion-simulacion" class="form-control input-number" value="5" data-min="1">
+							    <span class="input-group-btn btn-ocultar">
+							        <button type="button" class="btn btn-default" data-value="1" data-target="#duracion-simulacion" data-toggle="spinner" data-on="mousehold">
+							            <span class="glyphicon glyphicon-plus"></span>
+							        </button>
+							    </span>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="cantidad-servicios" class="col-xs-6 control-label"><abbr title="Número de">Núm.</abbr> Servicios</label>
+						<div class="col-xs-6 control-label">
+							<div class="input-group">
+							    <span class="input-group-btn btn-ocultar">
+							        <button type="button" class="btn btn-default" data-value="-1" data-target="#cantidad-servicios" data-toggle="spinner" data-on="mousehold" onclick="eliminarServicio();">
+							            <span class="glyphicon glyphicon-minus"></span>
+							        </button>
+							    </span>
+							    <input type="text" data-ride="spinner" id="cantidad-servicios" class="form-control input-number" value="1" data-min="1" readonly="" >
+							    <span class="input-group-btn btn-ocultar">
+							        <button type="button" class="btn btn-default" data-value="1" data-target="#cantidad-servicios" data-toggle="spinner" data-on="mousehold" onclick="agregarServicio();">
+							            <span class="glyphicon glyphicon-plus"></span>
+							        </button>
+							    </span>
+							</div>
+						</div>
+					</div>
+				</form>
+				<h3 >Servicios</h3>
+				<div id="div-servicios">
+					<div class="panel panel-primary" id="panel-servicio-1">
+						<div class="panel-heading">Servicio #1</div>
+					    <div class="panel-body">
+					    	<form class="form-horizontal" role="form">
+					    		<div class="form-group">
+					    			<label for="nombre-servicio-1" class="col-xs-5 control-label">Nombre</label>
+					    			<div class="col-xs-7">
+					    	    		<input type="text" class="form-control" id="nombre-servicio-1" placeholder="Nomb. del Servicio" value="Débito">
+					    	    	</div>
+					    	  	</div>
+					    	  	<div class="form-group">
+					    			<label for="duracion-servicio-1" class="col-xs-5 control-label">Tiempo (seg)</label>
+					    			<div class="col-xs-7">
+					    	    		<div class="input-group">
+										    <span class="input-group-btn btn-ocultar">
+										        <button type="button" class="btn btn-default" data-value="-1" data-target="#duracion-servicio-1" data-toggle="spinner" data-on="mousehold">
+										            <span class="glyphicon glyphicon-minus"></span>
+										        </button>
+										    </span>
+										    <input type="text" data-ride="spinner" id="duracion-servicio-1" class="form-control input-number" value="10" data-min="1">
+										    <span class="input-group-btn btn-ocultar">
+										        <button type="button" class="btn btn-default" data-value="1" data-target="#duracion-servicio-1" data-toggle="spinner" data-on="mousehold">
+										            <span class="glyphicon glyphicon-plus"></span>
+										        </button>
+										    </span>
+										</div>
+					    	    	</div>
+					    	  	</div>
+					    	</form>
+					    </div>
+					</div>
+				</div>
+			</div>
+			<!-- Clientes -->
+			<div class="col-sm-6" id="div-clientes">
+				<div class="row">
+					<div class="col-sm-12 div-titulo">
+						<h1 class="text-center">Clientes</h1>
+					</div>
+				</div>
+				<div id="div-clientes-cola">
+					
+				</div>
+			</div>
+			<!-- Informacion -->
+			<div class="col-sm-3" id="div-informacion">
+				<div class="row">
+					<div class="col-sm-12 div-titulo">
+						<h1 class="text-center">Información</h1>
+					</div>
+				</div>
+				<form class="form-horizontal" role="form">
+		    		<div class="form-group">
+		    			<label for="tiempo-transcurrido" class="col-xs-8 control-label"><abbr title="Tiempo">T.</abbr> transcurrido (seg):</label>
+		    			<div class="col-xs-4">
+		    	    		<input type="text" class="form-control" id="tiempo-transcurrido" readonly="" value="0">
+		    	    	</div>
+		    	  	</div>
+		    	  	<div class="form-group">
+		    			<label for="clientes-atendidos" class="col-xs-8 control-label">Clientes atendidos:</label>
+		    			<div class="col-xs-4">
+		    	    		<input type="text" class="form-control" id="clientes-atendidos" readonly="" value="0">
+		    	    	</div>
+		    	  	</div>
+		    	  	<div class="form-group">
+		    			<label for="clientes-espera" class="col-xs-8 control-label">Clientes en espera:</label>
+		    			<div class="col-xs-4">
+		    	    		<input type="text" class="form-control" id="clientes-espera" readonly="" value="0">
+		    	    	</div>
+		    	  	</div>
+		    	  	<div class="form-group">
+		    			<label for="taquillas-abiertas" class="col-xs-8 control-label">Taquillas abiertas:</label>
+		    			<div class="col-xs-4">
+		    	    		<input type="text" class="form-control" id="taquillas-abiertas" readonly="" value="0">
+		    	    	</div>
+		    	  	</div>
+		    	  	<div class="btn-group btn-group-justified">
+		    	  		<a href="#" class="btn btn-success" id="btn-iniciar" onclick="iniciar();" >Iniciar</a>
+		    	  		<a href="#" class="btn btn-info hidden" id="btn-detener" onclick="detener();">Detener</a>
+		    	  		<a href="#" class="btn btn-danger hidden" id="btn-reiniciar" onclick="reiniciar();">Reiniciar</a>
+		    	  	</div>
+		    	  	<br/>
+		    	  	<div class="text-justify" >
+		    	  		<h3 id="titulo-notas">Notas</h3>
+		    	  		<ul>
+		    	  			<li>El Máx. cliente incluye al que está siendo atendido, es decir, un cliente está en espera hasta que sea <b>atendido en un 100%.</b></li>
+		    	  			<li>Al detener la simulación se conservan los estados de los clientes en ese <b>instante de tiempo</b>.</li>
+		    	  			<li>El tiempo que se muestra al lado de los clientes es el <b>tiempo de llegada</b> de los mismos.</li>
+		    	  		</ul>
+		    	  	</div>
+		    	</form>
+			</div>
+		</div>
+	</div>
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap-spinner.js"></script>
+	<script src="js/mousehold.js"></script>
+	<script src="js/acciones.js"></script>
+</body>
+</html>
+

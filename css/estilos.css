@@ -1,0 +1,23 @@
+.div-titulo{
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 10px;
+}
+
+#div-servicios{
+    height: 250px;
+    overflow-y: scroll;
+}
+
+#div-clientes-cola{
+	/*height: 600px;*/
+    /*overflow-y: scroll;*/
+}
+
+#div-clientes{
+	border-right: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+}
+
+#titulo-notas{
+	margin-top: 0;
+}
